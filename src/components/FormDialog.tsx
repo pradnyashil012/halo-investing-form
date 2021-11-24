@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Button, makeStyles, Dialog, Typography } from '@material-ui/core';
+import {Button, Grid, Dialog, Typography } from '@material-ui/core';
 import correct from '../correct.svg';
 import { ArrowBack } from '@material-ui/icons';
 import useStyles from './Styles';
 
-const AlertDialog = (props: any) => {
+const FormDialog = (props: any) => {
 
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -16,42 +16,42 @@ const AlertDialog = (props: any) => {
     };
 
   return (
-    <div className="container">
-      <div className="row">
+    <Grid container>
+      <Grid container item>
         <Dialog
           open={props?props.open:false}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <div className={classes.header}>
-            <div className="col-lg-2 col-xs-1">
+          <Grid container className={classes.header}>
+            <Grid item lg={3} xs={3} style={{marginLeft: 5}}>
               <img src={correct} alt="" />
-            </div>
-            <div className="col-lg-10 col-xs-11">
+            </Grid>
+            <Grid item lg={8} xs={8}>
               <Typography className={classes.maintitle}>You'are all set!</Typography>
               <Typography className={classes.subtitle}>Someone will reach out to you soon.</Typography>
-            </div>
-          </div>
+            </Grid>
+          </Grid>
           <hr />
-          <div className="d-flex mb-2">
-          <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          <Button onClick={props.close} color="primary" startIcon={<ArrowBack className={classes.icon} />}>
-             Back
-          </Button>
-          </div>
-          <div className="col-lg-8 col-md-8 col-sm-8 col-xs-8"></div>
-          <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-          <Button onClick={props.close} variant='contained' color="primary" autoFocus>
-              Done
+          <Grid container style={{marginTop: 10, marginBottom: 10}}>
+            <Grid item  md={2}  xs={4}>
+              <Button onClick={props.close} color="primary" startIcon={<ArrowBack className={classes.icon} />}>
+              Back
             </Button>
-          </div>
-          </div>
+            </Grid>
+            <Grid item  md={8}  xs={5}></Grid>
+            <Grid item  md={2}  xs={3}>
+              <Button onClick={props.close} variant='contained' color="primary" autoFocus>
+                Done
+              </Button>
+            </Grid>
+          </Grid>
         </Dialog>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
 
 
-export default AlertDialog;
+export default FormDialog;

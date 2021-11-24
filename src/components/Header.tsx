@@ -11,11 +11,11 @@ const Header = (props: any) => {
             <Grid  lg={1} xs={2} className={classes.first}>
                 <img src={logo} alt="" />
             </Grid>
-            <Grid lg={1} xs={2} className={classes.second}>
-                <Typography className={classes.title}>{props.Title}</Typography>
-                <Typography className={classes.description}>{props.Description}</Typography>
+            <Grid lg={4} xs={6} className={classes.second}>
+                <Typography className={classes.title}>{props.title}</Typography>
+                <Typography className={classes.description}>{props.description}</Typography>
             </Grid>
-            <Grid lg={10} xs={7}></Grid>
+            <Grid lg={7} xs={4}></Grid>
         </Grid>
     )
 }

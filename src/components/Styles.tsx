@@ -1,11 +1,6 @@
 import {makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles((theme)=>({
-    //Form
-    firstLast: {
-        marginBottom: 10
-    },
-
     //Header
     title: {
         fontSize: 24,
@@ -63,9 +58,7 @@ const useStyles = makeStyles((theme)=>({
       fontSize: 'medium'
     },
     header: {
-      display: 'flex',
       marginTop: 20,
-      marginLeft: 20,
       justifyItems: 'flex-start',
       width: '500px',
       [theme.breakpoints.down('xs')]: {

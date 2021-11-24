@@ -3,9 +3,9 @@ import { Card, CardContent, TextField, Button, Typography, Grid } from "@materia
 import { ChangeEvent, useState } from "react";
 
 //components
-import AlertDialog from './FormDialog';
 import Header from './Header';
 import useStyles from './Styles';
+import FormDialog from './FormDialog';
 
 const initialValues = {
     firstName: '',
@@ -48,7 +48,7 @@ const Form = (props: any) => {
     
         if (form.email.indexOf("@") === -1) {
         isError = true;
-        errors.emailError = "Requires valid email.";
+        errors.emailError = "Email is not valid";
         }
 
         if (form.firstName.length <= 1) {
@@ -59,11 +59,6 @@ const Form = (props: any) => {
         if (form.lastName.length <= 1) {
         isError = true;
         errors.lastNameError = "Please enter Last Name.";
-        }
-
-        if (form.department.length <= 3) {
-        isError = true;
-        errors.departmentError = "Please enter Department Name.";
         }
     
         setForm({
@@ -92,16 +87,16 @@ const Form = (props: any) => {
 
     return (
         <>
-        <Grid container>
+        <Grid container style={{marginTop: 10}}>
             <Grid container item>
                 <Grid lg={1} xs={12}></Grid>
                 <Grid container lg={10} xs={12}>
                     <Card>
-                        <Header Title={props.Title} Description={props.Description} />
+                        <Header title={props.title} description={props.description} />
                             <hr />
                             <CardContent className="row">
-                                <Grid container lg={2} md={1} sm={12} xs={12}></Grid>
-                                <Grid container lg={8} md={10} sm={12} xs={12} spacing={2} style={{marginBottom: 15}}>
+                                <Grid container md={2} xs={12}></Grid>
+                                <Grid container md={8} xs={12} spacing={2} style={{marginBottom: 15}}>
                                         <Grid item lg={6} md={6} sm={12} xs={12}>
                                             <TextField
                                             required
@@ -109,7 +104,6 @@ const Form = (props: any) => {
                                             fullWidth
                                             variant="outlined"
                                             value={form.firstName}
-                                            
                                             onChange={handleChange}  
                                             name="firstName"
                                             />
@@ -177,13 +171,13 @@ const Form = (props: any) => {
                                         <TextField
                                         required
                                         placeholder="Message"
+                                        label="Message"
                                         multiline
                                         rows={4}
                                         fullWidth
                                         variant="outlined"
                                         value={form.message}
                                         onChange={handleChange} 
-                                        
                                         name="message"
                                         />
                                         {form.messageError && (
@@ -196,10 +190,10 @@ const Form = (props: any) => {
                                     </Grid>
                                     
                                 </Grid>
-                                <Grid container lg={2} md={1} sm={12} xs={12}></Grid>
+                                <Grid container md={2} xs={12}></Grid>
                                 <hr />
-                                <Grid lg={10} md={10} sm={12} xs={12}></Grid>
-                                <Grid lg={2} md={2} sm={12} xs={12}>
+                                <Grid md={10} xs={12}></Grid>
+                                <Grid md={2} xs={12}>
                                     {
                                         !form.firstName || !form.lastName || !form.email || !form.message
                                         ? (
@@ -215,7 +209,7 @@ const Form = (props: any) => {
                 <Grid lg={1} xs={12}></Grid>
             </Grid>
         </Grid>
-        {displayAlert && <AlertDialog open={true} close={handleClose} />}
+        {displayAlert && <FormDialog open={true} close={handleClose} />}
         </>
     )
 }

@@ -6,7 +6,7 @@ import Form from './components/Form';
 const App: React.FC = () => {
   return (
     
-     <Form Title="Rahul" Description="Lama" />
+     <Form title="Pradnyashil" description="Software Engineer" />
    
   );
 }
